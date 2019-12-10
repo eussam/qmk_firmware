@@ -158,12 +158,14 @@ bool process_magic(uint16_t keycode, keyrecord_t *record) {
             clear_keyboard();  // clear first buffer to prevent stuck keys
             keymap_config.nkro = !keymap_config.nkro;
             break;
+#if 0
         case MAGIC_EE_HANDS_LEFT:
             eeconfig_update_handedness(true);
             break;
         case MAGIC_EE_HANDS_RIGHT:
             eeconfig_update_handedness(false);
             break;
+#endif
         default:
             // Not a magic keycode so continue processing
             return true;
