@@ -52,7 +52,7 @@ if [ -n "$target" ]; then
 fi
 dir=$(pwd -W 2>/dev/null) || dir=$PWD  # Use Windows path if on Windows
 
-# PF: compilation des lib si nécesaire
+# PF: compilation des lib quand nécesaire
 # docker run --rm -it -w /qmk_firmware -v $PWD:/qmk_firmware qmkfm/base_container make git-submodule
 
 docker run --rm -it $usb_args \
