@@ -21,6 +21,7 @@
 // https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
 #define VSC_LBC G(FR_SLSH) // line block comment
 #define VSC_BC S(A(FR_A))  // block comment
+#define VSC_DL G(S(KC_K))
 
 // #define KC_PC_UNDO LCTL(KC_Z)
 // #define KC_PC_CUT LCTL(KC_X)
@@ -163,13 +164,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-//    Right hand (RGUI(FR_AMP) => shortcut bar)
-//    GUI(KC_J) => VSC window debug
-// LSFT(KC_GRV)  RGUI(LSFT(KC_GRV)) RGUI(LSFT(FR_COLN)) RGUI(FR_HASH) RGUI(FR_EQL) RGUI(LSFT(KC_SLSH)) RGUI(KC_SLSH) LGUI(KC_SCLN) LGUI(LSFT(KC_SCLN))
+//  Right hand (RGUI(FR_AMP) => shortcut bar)
+//  GUI(KC_J) => VSC window debug
+//  => VSC delete line TOTO
 
                 /*=========================================================================================================*/
                 /**/           /**/           /**/           /**/           /**/           /**/           /**/           /**/
-                /**/ _______,  /**/ _______,  /**/ _______,  /**/ _______,  /**/ _______,  /**/ _______,  /**/KC_MAC_UNDO,/**/
+                /**/ _______,  /**/ _______,  /**/ _______,  /**/  VSC_DL,  /**/ _______,  /**/ _______,  /**/KC_MAC_UNDO,/**/
                 /**/           /**/           /**/           /**/           /**/           /**/           /**/           /**/
                 /*=========================================================================================================*/
                 /**/           /**/           /**/           /**/           /**/           /**/           /**/           /**/
