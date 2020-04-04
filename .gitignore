@@ -4,7 +4,8 @@
 *.bin
 *.eep
 *.elf
-*.hex
+# je garde le layout eussam compilé
+# *.hex
 *.qmk
 !util/bootloader.hex
 !quantum/tools/eeprom_reset.hex
