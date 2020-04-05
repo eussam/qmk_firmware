@@ -18,7 +18,7 @@
 #define KC_MAC_SAVE LGUI(KC_S)
 
 // VSC Shortcuts
-// https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+// https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
 #define VSC_LBC G(FR_SLSH) // line block comment
 #define VSC_BC S(A(FR_A))  // block comment
 #define VSC_DL G(S(KC_K))  // delete line
