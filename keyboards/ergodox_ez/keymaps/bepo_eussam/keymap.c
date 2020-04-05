@@ -21,7 +21,9 @@
 // https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
 #define VSC_LBC G(FR_SLSH) // line block comment
 #define VSC_BC S(A(FR_A))  // block comment
-#define VSC_DL G(S(KC_K))
+#define VSC_DL G(S(KC_K))  // delete line
+#define VSC_FORMAT S(A(KC_F))  // format document
+
 
 // #define KC_PC_UNDO LCTL(KC_Z)
 // #define KC_PC_CUT LCTL(KC_X)
@@ -170,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                 /*=========================================================================================================*/
                 /**/           /**/           /**/           /**/           /**/           /**/           /**/           /**/
-                /**/ _______,  /**/ _______,  /**/ _______,  /**/  VSC_DL,  /**/ _______,  /**/ _______,  /**/KC_MAC_UNDO,/**/
+                /**/ _______,  /**/ _______,  /**/ _______,  /**/  VSC_DL,  /**/VSC_FORMAT,/**/ _______,  /**/KC_MAC_UNDO,/**/
                 /**/           /**/           /**/           /**/           /**/           /**/           /**/           /**/
                 /*=========================================================================================================*/
                 /**/           /**/           /**/           /**/           /**/           /**/           /**/           /**/
