@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
+#ifdef AUDIO_ENABLE
 #include "muse.h"
+#endif
 #include "eeprom.h"
 
 // #include "keymap_german.h"
@@ -113,8 +115,11 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
 
+
+// #define TEST_COL 0,174,143
+#define TEST_COL 0,0,0
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [0] = { {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143}, {0,174,143} },
+    [0] = { {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL} },
 
 };
 
@@ -169,6 +174,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+#ifdef AUDIO_ENABLE
 bool muse_mode = false;
 uint8_t last_muse_note = 0;
 uint16_t muse_counter = 0;
@@ -236,6 +242,7 @@ void matrix_scan_user(void) {
 //         return true;
 //     }
 // }
+#endif
 
 // layer_state_t layer_state_set_user(layer_state_t state) {
 //     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
