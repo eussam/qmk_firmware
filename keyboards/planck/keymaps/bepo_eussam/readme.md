@@ -1,4 +1,4 @@
-# PF: créé à partir du layout "glow"
+# PF: créé à partir du layout "oryx"
 
 
 
