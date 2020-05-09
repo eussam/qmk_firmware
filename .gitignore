@@ -5,7 +5,7 @@
 *.eep
 *.elf
 # je garde le layout eussam compilé
-# *.hex
+*.hex
 *.qmk
 !util/bootloader.hex
 !quantum/tools/eeprom_reset.hex
@@ -67,3 +67,11 @@ id_rsa_*
 
 # python things
 __pycache__
+
+
+######
+# PF
+######
+# - je garde le layout eussam compilé
+!ergodox_ez_bepo_eussam.hex
+!planck_ez_bepo_eussam.bin
