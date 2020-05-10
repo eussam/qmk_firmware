@@ -146,8 +146,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-////////////
-// TEST COLOR PHIL
+/////////////////////////////////
+// Gestion des couleurs
+// Note: dernière rangé, seulement 11 keys, la touche espace n'est pas colorisée
+/////////////////////////////////
+
+// pas de couleur
+#define C_NO {0,0,0}
+// touche principale home row pour repère
+#define C_HOME_KEY {0,205,155}
+
 
 extern bool g_suspend_state;
 extern rgb_config_t rgb_matrix_config;
@@ -157,12 +165,15 @@ void keyboard_post_init_user(void) {
 }
 
 
-// #define TEST_COL 0,174,143
-#define TEST_COL 0,0,0
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
-    [0] = { {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL}, {TEST_COL} },
-
+    [BASE] = {
+      C_NO, C_NO, C_NO, C_HOME_KEY, C_NO,  C_NO,   C_NO, C_NO, C_HOME_KEY, C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO,       C_NO,  C_NO,   C_NO, C_NO, C_NO,       C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO,       C_NO,  C_NO,   C_NO, C_NO, C_NO,       C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO,       C_NO,  /*xxx*/ C_NO, C_NO, C_NO,       C_NO, C_NO, C_NO
+    }
 };
+
 
 void set_layer_color(int layer) {
   for (int i = 0; i < DRIVER_LED_TOTAL; i++) {

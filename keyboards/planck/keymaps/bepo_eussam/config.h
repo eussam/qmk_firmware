@@ -13,3 +13,6 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 #define ORYX_CONFIGURATOR
+
+// PF: control plus fin de l'auto shift (cf rules.mk)
+// #define NO_AUTO_SHIFT_NUMERIC
