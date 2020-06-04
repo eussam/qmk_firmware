@@ -38,7 +38,8 @@ enum planck_layers {
   BASE,
   NAV,
   SYMBOL,
-  NUMPAD
+  NUMPAD,
+  MOUSE
 };
 
 
@@ -82,10 +83,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * `-----------------------------------------------------------------------------------'
   */
   [BASE] = LAYOUT_planck_grid(
-      KC_ESC,  KC_B,    FR_EACU,    KC_P,               KC_O,            FR_EGRV,    FR_CIRC,    KC_V,    KC_D,               KC_L,    KC_J,    FR_Z,
-      KC_TAB,  FR_A,    KC_U,       KC_I,               KC_E,            FR_COMM,    KC_C,       KC_T,    KC_S,               KC_R,    KC_N,    FR_M,
-      KC_LSFT, FR_AGRV, KC_Y,       KC_X,               FR_DOT,          KC_K,       FR_APOS,    FR_Q,    KC_G,               KC_H,    KC_F,    FR_W ,
-      KC_LGUI, KC_LCTL, KC_LALT,    LT(SYMBOL,FR_CCED), LT(NAV,KC_BSPC), KC_SPC,     KC_SPC,     KC_ENT,  LT(SYMBOL,KC_UP),   KC_DOWN, KC_LEFT, KC_RIGHT
+      KC_ESC,             KC_B,    LT(MOUSE,FR_EACU),    KC_P,               KC_O,            FR_EGRV,    FR_CIRC,    KC_V,    KC_D,               KC_L,    KC_J,    FR_Z,
+      LT(NUMPAD,KC_TAB),  FR_A,    KC_U,                 KC_I,               KC_E,            FR_COMM,    KC_C,       KC_T,    KC_S,               KC_R,    KC_N,    FR_M,
+      KC_LSFT,            FR_AGRV, KC_Y,                 KC_X,               FR_DOT,          KC_K,       FR_APOS,    FR_Q,    KC_G,               KC_H,    KC_F,    FR_W ,
+      KC_LGUI,            KC_LCTL, KC_LALT,              LT(SYMBOL,FR_CCED), LT(NAV,KC_BSPC), KC_SPC,     KC_SPC,     KC_ENT,  LT(SYMBOL,KC_UP),   KC_DOWN, KC_LEFT, KC_RIGHT
   ),
 
   /* NAV 
@@ -108,13 +109,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* SYMBOL 
   * ,-----------------------------------------------------------------------------------.
-  * | Esc  |      |      |      |    	 |      |      |      |      |      |      |      |
+  * | Esc  |  !   |   @  |  {   |   }	 |  %   |   ^  |   +  |   -  |   `  |  ;   |      |
   * |------+------+------+------+------+-------------+------+------+------+------+------|
-  * | Tab  |      |      |      |      |      |      |      |      |      |      |      |
+  * | Tab  |  #   |   _  |  (   |   )  |  &   |   |  |   =  |   '  |   :  |  "   |      |
   * |------+------+------+------+------+------|------+------+------+------+------+------|
-  * | Shift|      |      |      |      |      |      |      |      |      |      |      |
+  * | Shift|  \   |   /  |  [   |   ]  |  ~   |   $  |   *  |   <  |   >  |  ?   |      |
   * |------+------+------+------+------+------+------+------+------+------+------+------|
-  * | GUI  |      |      |      |      |    Space    |      |      |      |      |      |
+  * | GUI  |      |      |  €   |   £  |    Space    |      |      |      |      |      |
   * `-----------------------------------------------------------------------------------'
   */
   [SYMBOL] = LAYOUT_planck_grid(
@@ -140,6 +141,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       ___, ___, ___, ___, ___, ___, ___, KC_KP_4, KC_KP_5,  KC_KP_6, KC_KP_MINUS,    FR_DOT,
       ___, ___, ___, ___, ___, ___, ___, KC_KP_1, KC_KP_2,  KC_KP_3, KC_KP_PLUS,     KC_COLN,
       ___, ___, ___, ___, ___, ___, ___, FR_0,    FR_0,     FR_DOT,  KC_KP_SLASH,    FR_COMM
+  ),
+
+  /* MOUSE 
+  * ,-----------------------------------------------------------------------------------.
+  * | Esc  |      |      |      |  M2  |      |      |  mWU |  mU  |  mWD |      |      |
+  * |------+------+------+------+------+-------------+------+------+------+------+------|
+  * | Tab  |      |      |      |      |  M1  |      |   mL |  mD  |  mR  |      |      |
+  * |------+------+------+------+------+------|------+------+------+------+------+------|
+  * | Shift|      |      |      |      |      |      |      |      |      |      |      |
+  * |------+------+------+------+------+------+------+------+------+------+------+------|
+  * | GUI  |      |      |      |      |    Space    |      |      |      |      |      |
+  * `-----------------------------------------------------------------------------------'
+  */
+  [MOUSE] = LAYOUT_planck_grid(
+      ___, ___, ___, KC_MS_BTN2, ___,        ___, ___, KC_WH_U, KC_MS_U,  KC_WH_D, ___,  ___,
+      ___, ___, ___, ___,        KC_MS_BTN1, ___, ___, KC_MS_L, KC_MS_D,  KC_MS_R, ___,  ___,
+      ___, ___, ___, ___,        ___,        ___, ___, ___,     ___,      ___,     ___,  ___,
+      ___, ___, ___, ___,        ___,        ___, ___, ___,     ___,      ___,     ___,  ___
   )
 
 };
@@ -151,12 +170,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Note: dernière rangé, seulement 11 keys, la touche espace n'est pas colorisée
 /////////////////////////////////
 
-// pas de couleur
-#define C_NO {0,0,0}
-// touche principale home row pour repère
-#define C_HOME_KEY {0,205,155}
-
-
 extern bool g_suspend_state;
 extern rgb_config_t rgb_matrix_config;
 
@@ -165,13 +178,50 @@ void keyboard_post_init_user(void) {
 }
 
 
+// {0,255,255} => rouge plein
+
+// pas de couleur
+#define C_NO {0,0,0}
+// touche principale home row pour repère
+#define C_HOME_KEY {0,205,155}
+// #define C_HOME_KEY {0,255,255}
+// couleur utilisée dans le layer NAV
+#define C_NAV {31,255,255}
+// couleur utilisée dans le layer SYMBOL
+#define C_SYM {141,255,233}
+// couleur utilisée dans le layer NUMPAD
+#define C_NUM {250,159,255}
+
 const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
+
     [BASE] = {
       C_NO, C_NO, C_NO, C_HOME_KEY, C_NO,  C_NO,   C_NO, C_NO, C_HOME_KEY, C_NO, C_NO, C_NO, 
       C_NO, C_NO, C_NO, C_NO,       C_NO,  C_NO,   C_NO, C_NO, C_NO,       C_NO, C_NO, C_NO, 
       C_NO, C_NO, C_NO, C_NO,       C_NO,  C_NO,   C_NO, C_NO, C_NO,       C_NO, C_NO, C_NO, 
       C_NO, C_NO, C_NO, C_NO,       C_NO,  /*xxx*/ C_NO, C_NO, C_NO,       C_NO, C_NO, C_NO
+    },
+
+    [NAV] = {
+      C_NO, C_NO, C_NO, C_NO, C_NO,  C_NO,   C_NO, C_NO, C_NAV,  C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO, C_NO,  C_NO,   C_NO, C_NAV, C_NAV, C_NAV, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO, C_NO,  C_NO,   C_NO, C_NO, C_NO,   C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO, C_NO,  /*xxx*/ C_NO, C_NO, C_NO,   C_NO, C_NO, C_NO
+    },
+
+    [SYMBOL] = {
+      C_NO, C_NO, C_NO, C_SYM, C_SYM,  C_NO,  C_NO, C_NO, C_NO, C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_SYM, C_SYM,  C_NO,  C_NO, C_NO, C_NO, C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_SYM, C_SYM,  C_NO,  C_NO, C_NO, C_NO, C_NO, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO,  C_NO,  /*xxx*/ C_NO, C_NO, C_NO, C_NO, C_NO, C_NO
+    },
+
+    [NUMPAD] = {
+      C_NO, C_NO, C_NO, C_NO, C_NO,  C_NO,   C_NO, C_NUM, C_NUM, C_NUM, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO, C_NO,  C_NO,   C_NO, C_NUM, C_NUM, C_NUM, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO, C_NO,  C_NO,   C_NO, C_NUM, C_NUM, C_NUM, C_NO, C_NO, 
+      C_NO, C_NO, C_NO, C_NO, C_NO,  /*xxx*/ C_NO, C_NO,  C_NO,  C_NO,  C_NO, C_NO
     }
+
 };
 
 
@@ -195,8 +245,17 @@ void set_layer_color(int layer) {
 void rgb_matrix_indicators_user(void) {
   if (g_suspend_state || keyboard_config.disable_layer_led) { return; }
   switch (biton32(layer_state)) {
-    case 0:
-      set_layer_color(0);
+    case BASE:
+      set_layer_color(BASE);
+      break;
+    case NAV:
+      set_layer_color(NAV);
+      break;
+    case SYMBOL:
+      set_layer_color(SYMBOL);
+      break;
+    case NUMPAD:
+      set_layer_color(NUMPAD);
       break;
    default:
     if (rgb_matrix_get_flags() == LED_FLAG_NONE)
